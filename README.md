@@ -1,5 +1,7 @@
 ### EX7 Implementation of Link Analysis using HITS Algorithm
-### DATE: 
+## NAME: VIJAYAKUMAR S
+## REG NO:212224040359
+## DATE: 09-03-2026
 ### AIM: To implement Link Analysis using HITS Algorithm in Python.
 ### Description:
 <div align = "justify">
@@ -44,16 +46,16 @@ def hits_algorithm(adjacency_matrix, max_iterations=100, tol=1.0e-6):
     
     for i in range(max_iterations):
         # Authority update
+        new_authority_scores = adjacency_matrix.T @ hub_scores
+        new_authority_scores = new_authority_scores / np.linalg.norm(new_authority_scores)
 
-             /*WRITE YOUR CODE HERE
-        
         # Hub update
+        new_hub_scores = adjacency_matrix @ new_authority_scores
+        new_hub_scores = new_hub_scores / np.linalg.norm(new_hub_scores)
 
-             /*WRITE YOUR CODE HERE
-        
         # Check convergence
-
-             /*WRITE YOUR CODE HERE
+        authority_diff = np.linalg.norm(new_authority_scores - authority_scores)
+        hub_diff = np.linalg.norm(new_hub_scores - hub_scores)
         
         if authority_diff < tol and hub_diff < tol:
             break
@@ -63,8 +65,7 @@ def hits_algorithm(adjacency_matrix, max_iterations=100, tol=1.0e-6):
     
     return authority_scores, hub_scores
 
-# Example adjacency matrix (replace this with your own data)
-# For simplicity, using a random adjacency matrix
+
 adj_matrix = np.array([
     [0, 1, 1],
     [1, 0, 0],
@@ -93,5 +94,7 @@ plt.show()
 ```
 
 ### Output:
+<img width="1145" height="859" alt="image" src="https://github.com/user-attachments/assets/fcbd9c27-fdf4-4811-a156-e6bd09594ab2" />
 
 ### Result:
+Thus, the HITS algorithm was successfully implemented to compute and visualize the authority and hub scores of nodes in a web graph.
